@@ -1,4 +1,5 @@
 import os
+import sys
 from skimage import io, transform
 import torch
 import torchvision
@@ -55,11 +56,8 @@ def main():
 
     # --------- 1. get image path and name ---------
     model_name='u2netp'# fixed as u2netp
-
-
-
-    image_dir = os.path.join(os.getcwd(), 'images') # changed to 'images' directory which is populated while running the script
-    prediction_dir = os.path.join(os.getcwd(), 'results/') # changed to 'results' directory which is populated after the predictions
+    image_dir = sys.argv[0] # changed to 'images' directory which is populated while running the script
+    prediction_dir = sys.argv[1] # changed to 'results' directory which is populated after the predictions
     model_dir = os.path.join(os.getcwd(), model_name + '.pth') # path to u2netp pretrained weights
 
     img_name_list = glob.glob(image_dir + os.sep + '*')
